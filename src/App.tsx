@@ -46,7 +46,7 @@ useEffect(() => {
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {todos.slice(0, 10).map((todo) => (
+            {todos.slice(0, 12).map((todo) => (
               <TodoCard key={todo.id} todo={todo} />
             ))}
           </div>
