@@ -1,4 +1,4 @@
-import {Todo} from "../types/types.todos.ts";
+import {Todo} from "../types";
 
 interface TodoCardProps {
   todo:Todo;
