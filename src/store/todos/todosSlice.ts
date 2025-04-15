@@ -3,12 +3,14 @@ import { Todo } from '../../types';
 
 interface TodosState {
   todos: Todo[];
+  totalCount: number;
   status: 'idle' | 'loading' | 'succeeded' | 'failed';
   error: string | null;
 }
 
 const initialState: TodosState = {
   todos: [],
+  totalCount: 0,
   status: 'idle',
   error: null,
 };
@@ -20,9 +22,10 @@ const todosSlice = createSlice({
     fetchTodosStart(state) {
       state.status = 'loading';
     },
-    fetchTodosSuccess(state, action: PayloadAction<Todo[]>) {
+    fetchTodosSuccess(state, action: PayloadAction<{ todos: Todo[]; totalCount: number }>) {
       state.status = 'succeeded';
-      state.todos = action.payload;
+      state.todos = action.payload.todos;
+      state.totalCount = action.payload.totalCount;
       state.error = null;
     },
     fetchTodosFailure(state, action: PayloadAction<string>) {
